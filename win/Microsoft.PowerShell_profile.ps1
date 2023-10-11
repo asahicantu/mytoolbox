@@ -1,6 +1,3 @@
-# Powershell default profile settings code.
-# Should be exported to C:\Users\<uname>\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
-
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship\starship.toml"
 #$ENV:STARSHIP_CONFIG = "$HOME\.config\starship\bracketed-segments.toml"
 #$ENV:STARSHIP_CONFIG = "$HOME\.config\starship\nerd-font-symbols.toml"
@@ -72,4 +69,18 @@ function edit-hist{
 
 function edit-starship{
     code $ENV:STARSHIP_CONFIG 
+}
+
+function set-userEnv{
+    param (
+        [Parameter()]
+        [Alias('key')]
+        [string]
+        $key,
+        [Parameter()]
+        [Alias('value')]
+        [string]
+        $value
+    )
+    [Environment]::SetEnvironmentVariable($key, $value, [System.EnvironmentVariableTarget]::User)
 }
