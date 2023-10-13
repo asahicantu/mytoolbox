@@ -84,3 +84,11 @@ function set-userEnv{
     )
     [Environment]::SetEnvironmentVariable($key, $value, [System.EnvironmentVariableTarget]::User)
 }
+
+
+function Get-FavoriteCommand(){
+    $favoriteCommands = (
+        "Remove-Item c:\tmp\webapi\* -Recurse -Force; dotnet build --configuration Release --output c:\tmp\webapi; Compress-Archive -Force -Path C:\tmp\webapi\** -DestinationPath c:\tmp\webapi.zip;"
+    )
+    return $favoriteCommands
+}
